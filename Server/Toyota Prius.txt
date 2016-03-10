@@ -1,0 +1,9 @@
+Toyota Prius,Toyota,Prius,20000,5
+OPTIONSET
+0,Transmission,2
+automatic,0
+manual,-815
+OPTIONSET
+1,Brakes,2
+Standard,0
+ABS,400

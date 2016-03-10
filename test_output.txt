@@ -1,0 +1,113 @@
+/* This shows the database as the main function is executed */
+/*Code*/
+	BuildAuto myCar = new BuildAuto();
+	try{
+		myCar.buildAuto("Toyota Prius.txt", 0);
+		myCar.buildAuto("Ford_Focus_Wagon_ZTW.txt", 0);
+	} catch (AutoException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+/*end-code*/
+
+mysql> SELECT * FROM models;                                                                                               +----------+-----------------------+--------+-----------------+-----------+
+| model_id | name                  | make   | model           | baseprice |
++----------+-----------------------+--------+-----------------+-----------+
+|        1 | Toyota Prius          | Toyota | Prius           |     20000 |
+|        2 | Ford Focus Wagon ZTW2 | Ford   | Focus Wagon ZTW |     18845 |
++----------+-----------------------+--------+-----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM options;
++-----------+-----------+-------+
+| option_id | name      | price |
++-----------+-----------+-------+
+|         1 | automatic |     0 |
+|         2 | manual    |  -815 |
+|         3 | Standard  |     0 |
+|         4 | ABS       |   400 |
+|         5 | automatic |     0 |
+|         6 | manual    |  -500 |
+|         7 | Standard  |     0 |
+|         8 | ABS       |   625 |
++-----------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM relations;
++-------------+----------+----------+-----------+
+| relation_id | model_id | opset_id | option_id |
++-------------+----------+----------+-----------+
+|           1 |        1 |        1 |         1 |
+|           2 |        1 |        1 |         2 |
+|           3 |        1 |        2 |         3 |
+|           4 |        1 |        2 |         4 |
+|           5 |        2 |        1 |         5 |
+|           6 |        2 |        1 |         6 |
+|           7 |        2 |        2 |         7 |
+|           8 |        2 |        2 |         8 |
++-------------+----------+----------+-----------+
+8 rows in set (0.00 sec)
+
+
+
+
+/*Code*/
+	myCar.updateOptionPriceDB("Toyota Prius", "Brakes", "ABS", 350);
+/*end-code*/
+
+
+
+mysql> SELECT * FROM options;
++-----------+-----------+-------+
+| option_id | name      | price |
++-----------+-----------+-------+
+|         1 | automatic |     0 |
+|         2 | manual    |  -815 |
+|         3 | Standard  |   350 |
+|         4 | ABS       |   400 |
+|         5 | automatic |     0 |
+|         6 | manual    |  -500 |
+|         7 | Standard  |     0 |
+|         8 | ABS       |   625 |
++-----------+-----------+-------+
+8 rows in set (0.00 sec)
+
+
+
+
+/*Code*/
+	myCar.delete(“Toyota Prius”);
+/*end-code*/
+
+
+
+mysql> SELECT * FROM models;
++----------+-----------------------+------+-----------------+-----------+
+| model_id | name                  | make | model           | baseprice |
++----------+-----------------------+------+-----------------+-----------+
+|        2 | Ford Focus Wagon ZTW2 | Ford | Focus Wagon ZTW |     18845 |
++----------+-----------------------+------+-----------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM options;
++-----------+-----------+-------+
+| option_id | name      | price |
++-----------+-----------+-------+
+|         5 | automatic |     0 |
+|         6 | manual    |  -500 |
+|         7 | Standard  |     0 
+|         8 | ABS       |   625 |
++-----------+-----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM relations;
++-------------+----------+----------+-----------+
+| relation_id | model_id | opset_id | option_id |
++-------------+----------+----------+-----------+
+|           5 |        2 |        1 |         5 |
+|           6 |        2 |        1 |         6 |
+|           7 |        2 |        2 |         7 |
+|           8 |        2 |        2 |         8 |
++-------------+----------+----------+-----------+
+4 rows in set (0.00 sec)

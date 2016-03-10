@@ -1,0 +1,9 @@
+Ford Focus Wagon ZTW2,Ford,Focus Wagon ZTW,18845,5
+OPTIONSET
+0,Transmission,2
+automatic,0
+manual,-500
+OPTIONSET
+1,Brakes,2
+Standard,0
+ABS,625
